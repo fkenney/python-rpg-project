@@ -305,6 +305,7 @@ def end_fight():
     toggleButtons()
     message = "Finally, I got the key!"
     button_end_fight.grid_forget()
+    button_potion.grid_forget()
     updateView()
 
 
