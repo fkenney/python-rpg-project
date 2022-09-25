@@ -11,8 +11,8 @@ This game is a GUI RPG created using tkinter to render maps and locations within
 </p>
 
 ## Dependencies:
-- [tkinter (tkinter==8.6)](https://docs.python.org/3/library/tkinter.html)
-- [pillow ( PIL==9.2.0)](https://pillow.readthedocs.io/en/stable/)
+- [tkinter (tk==0.1.0)](https://docs.python.org/3/library/tkinter.html)
+- [pillow ( Pillow==9.2.0)](https://pillow.readthedocs.io/en/stable/)
 
 ## Installation:
   `pip -r requirements.txt`
