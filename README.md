@@ -6,6 +6,8 @@ This game is a GUI RPG created using tkinter to render maps and locations within
 - [tkinter (tkinter==8.6)](https://docs.python.org/3/library/tkinter.html)
 - [pillow ( PIL==9.2.0)](https://pillow.readthedocs.io/en/stable/)
 
+## Installation:
+  `pip -r requirements.txt`
 ## Game rules:
 - Explore the chocolate the chocolate factory to find a **key** to escape 
 - Use the (north, south, east, west) buttons to move to each room
