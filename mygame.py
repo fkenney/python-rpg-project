@@ -43,7 +43,10 @@ inventory = []
 # current room
 currentRoom = 'Chocolate Factory'
 
+# boolean to determine if user is currently fighting
 fighting = False
+
+# boolean to determine if game is over
 gameOver = False
 
 # -------------------- ROOMS --------------------------------------
@@ -161,6 +164,7 @@ def updateView():
     # updates image on map
     currentRoomImage.grid_forget()
 
+    # updates image to show the current health of monster during combat
     if fighting == True and gameOver == False:
         if monsterHealth == 100:
             currentRoomImage = Label(image=health100)
@@ -192,8 +196,11 @@ def updateView():
             del rooms[currentRoom]['monster']
             fighting = False
 
+    # displays image for losing combat
     elif gameOver == True:
         currentRoomImage = Label(image=youlose)
+
+    # displays image for winning combat
     else:
         currentRoomImage = Label(image=image)
 
@@ -220,12 +227,16 @@ def updateView():
 # --------------------- RIDDLE -------------------------------------------------------------
 # generates text box and button for riddles
 
+# renders input box and submit button to answer riddle
+
 
 def setUpRiddle():
     # input for riddle
     input.grid(row=4, column=0, columnspan=6, pady=(5, 10))
     # submit button for riddle
     button_submit.grid(row=4, column=4)
+
+# checks if riddle answer is correct
 
 
 def answerRiddle(answer):
@@ -298,6 +309,8 @@ def fight():
     toggleButtons()
     updateView()
 
+# exits the fight mode and updates the view
+
 
 def end_fight():
     global message
@@ -307,6 +320,8 @@ def end_fight():
     button_end_fight.grid_forget()
     button_potion.grid_forget()
     updateView()
+
+# used during combat to hit monster
 
 
 def hit():
@@ -334,6 +349,8 @@ def hit():
         button_hit.grid_forget()
     updateView()
 
+# allows user to use potion
+
 
 def potion():
     global health
@@ -344,6 +361,8 @@ def potion():
     button_potion.grid_forget()
     message = f"You used Potion! Your Health: ({health})  --------- Monster's Health: ({monsterHealth})"
     updateView()
+
+# enables/disables directional buttons
 
 
 def toggleButtons():
@@ -359,7 +378,7 @@ def toggleButtons():
         button_west["state"] = "normal"
 
 
-# ------------- VIEW LABELS/ IMAGES --------------------------------------
+# ------------- TKINTER LABELS/ IMAGES FOR VIEW-----------------------
 # current Image displayed
 currentRoomImage = Label(image=chocolate_fac)
 currentRoomImage.grid(row=0, column=0, columnspan=6)
