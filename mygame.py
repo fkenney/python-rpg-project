@@ -5,7 +5,6 @@ from PIL import Image, ImageTk
 
 """Felicia Kenney - Project 2 - RPG Game"""
 
-
 def main():
     global currentRoom
     global currentRoomImage
@@ -44,6 +43,7 @@ def main():
     # This renders the window
     screen = Tk()
     screen.title('The Chocolate Factory')
+
     # ------------------- IMAGES ------------------------------------------
     # images of map
     chocolate_fac = ImageTk.PhotoImage(Image.open("./images/chocolate.png"))
@@ -53,8 +53,7 @@ def main():
     sweet_shop = ImageTk.PhotoImage(Image.open("./images/sweetshop.png"))
     gummy_castle = ImageTk.PhotoImage(Image.open("./images/gummy_castle.png"))
     sweet_tooth = ImageTk.PhotoImage(Image.open("./images/monster.png"))
-    sweet_toothv2 = ImageTk.PhotoImage(
-        Image.open("./images/monster-defeated.png"))
+    sweet_toothv2 = ImageTk.PhotoImage(Image.open("./images/monster-defeated.png"))
     treasure = ImageTk.PhotoImage(Image.open("./images/treasure.png"))
 
     # monster health images
@@ -157,8 +156,8 @@ def main():
         updateView()
 
     # ------------------UPDATE VIEW ------------------------------------
+    
     # updates the current view displayed
-
     def updateView():
         global currentRoom
         global currentRoomImage
@@ -239,10 +238,8 @@ def main():
                             pady=(10, 20), sticky="nw")
 
     # --------------------- RIDDLE -------------------------------------------------------------
-    # generates text box and button for riddles
 
     # renders input box and submit button to answer riddle
-
     def setUpRiddle():
         # input for riddle
         input.grid(row=4, column=0, columnspan=6, pady=(5, 10))
@@ -250,7 +247,6 @@ def main():
         button_submit.grid(row=4, column=4)
 
     # checks if riddle answer is correct
-
     def answerRiddle(answer):
         global currentRoom
         global message
@@ -297,7 +293,6 @@ def main():
     # ------------------------ FIGHT -----------------------------------------
 
     # sets up screen to fight
-
     def fight():
         global fighting
         global message
@@ -307,6 +302,7 @@ def main():
 
         # updates status to fighing
         fighting = True
+        
         # shows health
         message = f"Your Health: ({health})  --------- Monster's Health: ({monsterHealth})"
 
@@ -321,7 +317,6 @@ def main():
         updateView()
 
     # exits the fight mode and updates the view
-
     def end_fight():
         global message
 
@@ -332,7 +327,6 @@ def main():
         updateView()
 
     # used during combat to hit monster
-
     def hit():
         global health
         global monsterHealth
@@ -359,10 +353,10 @@ def main():
         updateView()
 
     # allows user to use potion
-
     def potion():
         global health
         global message
+        
         # adjust health
         health = 200
         inventory.remove('Potion')
@@ -371,7 +365,6 @@ def main():
         updateView()
 
     # enables/disables directional buttons
-
     def toggleButtons():
         if button_north["state"] == "normal":
             button_north["state"] = "disabled"
@@ -394,63 +387,51 @@ def main():
     currentStatus.grid(row=1, column=0, columnspan=3, sticky="nw")
 
     # current inventory
-    currentInventory = Label(
-        text=f'Inventory: {inventory}', font='Helvetica 10 bold')
+    currentInventory = Label(text=f'Inventory: {inventory}', font='Helvetica 10 bold')
     currentInventory.grid(row=1, column=3, columnspan=3, sticky="nw")
 
     # current message
-
-    currentMessage = Label(
-        text=f'Message: {message}', font='Helvetica 10 bold', bg='white')
-
-    currentMessage.grid(row=3, column=0, columnspan=6,
-                        pady=(10, 20),  sticky="nw")
+    currentMessage = Label(text=f'Message: {message}', font='Helvetica 10 bold', bg='white')
+    currentMessage.grid(row=3, column=0, columnspan=6,pady=(10, 20),  sticky="nw")
 
     # input box
     input = Entry(screen, width=20)
 
     # -------------------- BUTTONS --------------------------------------
     # exit button
-    button_quit = Button(screen, text="Quit Game", bg='red',
-                         fg='white', command=screen.quit)
+    button_quit = Button(screen, text="Quit Game", bg='red',fg='white', command=screen.quit)
     button_quit.grid(row=10, column=5)
 
     # north
-    button_north = Button(screen, text="North", bg='blue',
-                          fg='white', command=lambda: move('north'))
+    button_north = Button(screen, text="North", bg='blue',fg='white', command=lambda: move('north'))
     button_north.grid(row=6, column=3)
 
     # south button
-    button_south = Button(screen, text="South",  bg='blue',
-                          fg='white', command=lambda: move('south'))
+    button_south = Button(screen, text="South",  bg='blue',fg='white', command=lambda: move('south'))
     button_south.grid(row=8, column=3)
 
     # west button
-    button_west = Button(screen, text="West",  bg='blue',
-                         fg='white', command=lambda: move('west'))
+    button_west = Button(screen, text="West",  bg='blue',fg='white', command=lambda: move('west'))
     button_west.grid(row=7, column=2)
 
     # east button
-    button_east = Button(screen, text="East",  bg='blue',
-                         fg='white', command=lambda: move('east'))
+    button_east = Button(screen, text="East",  bg='blue',fg='white', command=lambda: move('east'))
     button_east.grid(row=7, column=4)
 
     # submit button for input
-    button_submit = Button(screen, text="Submit",
-                           command=lambda: answerRiddle(input.get()))
+    button_submit = Button(screen, text="Submit", command=lambda: answerRiddle(input.get()))
 
     # fight button
-    button_fight = Button(screen, text="Start Fight", bg='black',
-                          fg='white', width=10, command=lambda: fight())
+    button_fight = Button(screen, text="Start Fight", bg='black',fg='white', width=10, command=lambda: fight())
+    
     # fight button
-    button_end_fight = Button(screen, text="Exit Fight", bg='black',
-                              fg='white', width=10, command=lambda: end_fight())
+    button_end_fight = Button(screen, text="Exit Fight", bg='black',fg='white', width=10, command=lambda: end_fight())
+    
     # hit button
-    button_hit = Button(screen, text="Hit", bg='black',
-                        fg='white', width=10, command=lambda: hit())
+    button_hit = Button(screen, text="Hit", bg='black',fg='white', width=10, command=lambda: hit())
+    
     # Potion button
-    button_potion = Button(screen, text="Use Potion", bg='green',
-                           fg='white', width=10, command=lambda: potion())
+    button_potion = Button(screen, text="Use Potion", bg='green',fg='white', width=10, command=lambda: potion())
 
     # opens window
     screen.mainloop()
