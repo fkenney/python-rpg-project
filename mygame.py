@@ -20,6 +20,7 @@ def main():
     global button_hit
     global button_fight
     global button_submit
+    global input
 
     # health
     health = 100
